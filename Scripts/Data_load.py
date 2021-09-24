@@ -52,5 +52,5 @@ class data_warehouse:
             print("Error: ", e)
 if __name__ == "__main__":
     TABLE_NAME = "sample"
-    a = data_warehouse(Host = "localhost", user = "root", my_password = "Abrilow@13")
-    a.load_Data(my_data , "localhost", "root", "Abrilow@13", TABLE_NAME, "./I80_sample.txt" )
+    a = data_warehouse(Host = "localhost", user = "root", my_password = "")
+    a.load_Data(my_data , "localhost", "root", "", TABLE_NAME, "./I80_sample.txt" )
