@@ -2,7 +2,7 @@ from mysql.connector import (connection)
 
 #establishing the connection
 conn = connection.MySQLConnection(user='root',
-                                  password='Abrilow@13', 
+                                  password='', 
                                   host='127.0.0.1'
                                 )
 cursor = conn.cursor()
