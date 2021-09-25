@@ -35,7 +35,7 @@ class data_warehouse:
             return conn, cursor
     
     def load_Data(self, dbName: str,  host: str, user: str, password: str, tableName: str, csv_file: str):
-        engine = create_engine(f'mysql+pymysql://{user}:{password}@{host}/{dbName}')
+        database_path = create_engine(f'mysql+pymysql://{user}:{password}@{host}/{dbName}')
         conn = mysql.connect(host=host, 
                                 user=user, 
                                 password=password,
@@ -45,12 +45,12 @@ class data_warehouse:
 
         try:
             dataframe = pd.read_csv(csv_file, sep=',', quotechar='\'', encoding='utf8')
-            dataframe.to_sql(tableName, con=engine, index=False, if_exists='append')
+            dataframe.to_sql(tableName, con=database_path, index=False, if_exists='append')
             print("Data Inserted Successfully")
         except Exception as e:
             conn.rollback()
             print("Error: ", e)
 if __name__ == "__main__":
     TABLE_NAME = "sample"
-    a = data_warehouse(Host = "localhost", user = "root", my_password = "")
-    a.load_Data(my_data , "localhost", "root", "", TABLE_NAME, "./I80_sample.txt" )
+    conn_dw = data_warehouse(Host = "localhost", user = "root", my_password = "")
+    conn_dw.load_Data(my_data , "localhost", "root", "", TABLE_NAME, "./I80_sample.txt" )
