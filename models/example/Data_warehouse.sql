@@ -1,7 +1,6 @@
 
 {{ config(
-    materialized="view",
-    schema="marketing"
+    materialized="view"
 ) }}
 
 with customer_orders as ...
